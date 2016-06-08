@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-wineboot -u
+wineboot --init
 
 Xvfb :0 -auth ~/.Xauthority -screen 0 1024x768x24 >>~/xvfb.log 2>&1 & 
 XVFB_PID=$!

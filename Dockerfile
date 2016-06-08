@@ -40,9 +40,6 @@ ENV WINEPREFIX /home/wine/.wine
 ENV WINEARCH win32
 WORKDIR /home/wine
 
-# initialise wine
-RUN wineboot --init .wine
-
 COPY install-vcrun6.sh .
 
 # install the installer's dependencies
