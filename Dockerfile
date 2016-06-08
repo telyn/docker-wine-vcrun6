@@ -44,3 +44,22 @@ COPY install-vcrun6.sh .
 
 # install the installer's dependencies
 RUN bash install-vcrun6.sh
+
+# now clean up in the hopes that we'll end up with a smaller image
+
+USER root
+RUN apt-get remove -y \
+	    xvfb \
+	    xauth \
+	    x11-xserver-utils \
+	    && apt-get autoremove -y
+
+USER wine
+ENV HOME /home/wine
+ENV WINEPREFIX /home/wine/.wine
+ENV WINEARCH win32
+WORKDIR /home/wine
+
+RUN rm -f .wine/drive_c/windows/Temp/_vcrun6
+RUN rm -rf .cache/winetricks
+
