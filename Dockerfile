@@ -1,11 +1,6 @@
 FROM debian:jessie
 MAINTAINER telyn <telyn@aetheria.co.uk>
 
-# your visual studio 6 product key
-ARG KEY
-# which STF file to use. Defaults to VB6.STF, which installs just Visual Basic 6.
-ARG STF
-
 USER root
 # Install X server, wine, and tools needed to run winetricks
 RUN dpkg --add-architecture i386 \
